@@ -17,7 +17,7 @@ class QuizController extends Controller
     public function index()
     {
         $quizzes = Quiz::paginate(6);
-       return view('admin.quiz.list',compact('quizzes'));
+        return view('admin.quiz.list',compact('quizzes'));
     }
 
     /**
@@ -39,7 +39,7 @@ class QuizController extends Controller
     public function store(QuizCreateRequest $request)
     {
         Quiz::create($request->post());
-        return redirect()->route('quizzes.index')->withSuccess('Quiz başarıyal Eklendi');
+        return redirect()->route('quizzes.index')->withSuccess('Quiz Başarıyıla Eklendi');
     }
 
     /**

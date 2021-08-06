@@ -27,6 +27,7 @@
         "-": "0.0.1",
         "@fortawesome/fontawesome-free": "^5.15.4",
         "bootstrap": "^5.1.0",
+        "jquery": "^3.6.0",
         "npm": "^7.20.5"
     }
 }

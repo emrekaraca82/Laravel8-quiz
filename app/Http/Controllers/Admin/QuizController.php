@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Http\Requests\QuizCreateRequest;
+use App\Http\Requests\QuizUpdateRequest;
+
 
 class QuizController extends Controller
 {
@@ -50,7 +52,7 @@ class QuizController extends Controller
      */
     public function show($id)
     {
-        //
+        return $id;
     }
 
     /**
@@ -61,7 +63,8 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı');  
+        return view('admin.quiz.edit',compact('quiz'));
     }
 
     /**
@@ -73,7 +76,10 @@ class QuizController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı');
+        //except method ile günceleme sayafsında method ve token hariç diğer verileri güncelliyoruz 
+        Quiz::where('id',$id)->update($request->except(['_method','_token']));
+        return redirect()->route('quizzes.index')->withSuccess('Quiz güncelleme işlemi başarıyla yapıldı');
     }
 
     /**
@@ -84,6 +90,9 @@ class QuizController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı');
+        $quiz->delete();
+        return redirect()->route('quizzes.index')->withSuccess('İlgili veri başarıyla silindi');
+        
     }
 }

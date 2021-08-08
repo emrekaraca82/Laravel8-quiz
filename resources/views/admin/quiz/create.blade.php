@@ -35,15 +35,15 @@
             </div>
         </div>
 </div>
-<x-slot name="js">Quizler</x-slot>
-<script>
-    $('#isFinished').change(function(){
-        if($('#isFinished').is(':checked')){
-            $('#finishedInput').show();
-        }else{
-            $('#finishedInput').hide();
-        }      
-    })
-    </script>
-
+    <x-slot name="js">
+        <script>
+            $('#isFinished').change(function(){
+                if($('#isFinished').is(':checked')){
+                    $('#finishedInput').show();
+                }else{
+                    $('#finishedInput').hide();
+                }      
+            })
+            </script>
+    </x-slot>
 </x-app-layout>

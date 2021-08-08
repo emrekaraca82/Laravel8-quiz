@@ -16,14 +16,14 @@
                             <th scope="col">3.Cevap</th>
                             <th scope="col">4.Cevap</th>
                             <th scope="col">Dogru Cevap</th>
-                            <th scope="col" style="width: 100px;">İşlemler</th>
+                            <th scope="col" style="width:100px;">İşlemler</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($quiz->questions as $question)
                         <tr>
                             <th>{{$question->question}}</th>
-                            <td>{{$question->image}}</td>
+                            <td><img src="{{asset($question->image)}}" class="img-thumbnail"></td>                      
                             <td>{{$question->answer1}}</td>
                             <th>{{$question->answer2}}</th>
                             <td>{{$question->answer3}}</td>

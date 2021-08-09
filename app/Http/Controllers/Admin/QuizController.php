@@ -86,7 +86,7 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuizUpdateRequest $request, $id)
     {
         $quiz = Quiz::find($id) ?? abort(404,'Quiz Bulunamadı');
         //except method ile günceleme sayafsında method ve token hariç diğer verileri güncelliyoruz 

@@ -25,10 +25,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/panel', function () {
 
 Route::group(['middleware'=>['auth','isAdmin'],'prefix'=>'admin'],function(){
     route::get('quizzes/{id}',[QuizController::class, 'destroy'])->whereNumber('id')->name('quizzes.destroy');
+    route::get('quiz/{quiz_id}/questions/{id}',[QuestionController::class, 'destroy'])->whereNumber('id')->name('questions.destroy');
     Route::resource('quizzes',QuizController::class);
 
     Route::resource('quiz/{quiz_id}/questions',QuestionController::class);
-   
+  
 });
 
 

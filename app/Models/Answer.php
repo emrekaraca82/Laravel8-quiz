@@ -11,4 +11,6 @@ class Answer extends Model
 
     //Answer tablosunda timestamps kullanılmayacak
     public $timestamps = false;
+
+    protected $fillable=['user_id','question_id','answer'];
 }

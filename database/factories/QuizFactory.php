@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Quiz;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class QuizFactory extends Factory
 {
@@ -21,10 +22,10 @@ class QuizFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //burada 3 ile 7 arasında title kelimleri oluşturyor
-            'title'=>$this->faker->sentence(rand(3,7)),
-            //burada 200 description oluşturyor
+        $title = $this->faker->sentence(rand(3,7));
+        return [  
+            'title'=>$title,
+            'slug'=>Str::slug($title),
             'description'=>$this->faker->text(200)
         ];
     }

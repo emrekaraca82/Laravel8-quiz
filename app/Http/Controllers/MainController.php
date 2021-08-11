@@ -23,7 +23,7 @@ class MainController extends Controller
 
     public function quiz_detail($slug)
     {
-        $quiz = Quiz::whereSlug($slug)->withCount('questions')->first() ?? abort(404,'Quiz bulunamadı');
+        $quiz = Quiz::whereSlug($slug)->with('my_result','results')->withCount('questions')->first() ?? abort(404,'Quiz bulunamadı');
         return view('quiz_detail',compact('quiz'));
     }
 
@@ -31,6 +31,12 @@ class MainController extends Controller
     {
         $quiz = Quiz::with('questions')->whereSlug($slug)->first() ?? abort(404,'Quiz bulunamadı');
         $correct=0;
+
+        if($quiz->my_result)
+        {
+            abort(404,"Bu Quiz'e daha önce katıldınız");
+        }
+        
         foreach($quiz->questions as $question){
         Answer::create([
             'user_id'=>auth()->user()->id,

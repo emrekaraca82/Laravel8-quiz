@@ -3,13 +3,11 @@
     <div class="container">
     <div class="card" >
     <div class="card-body">
-
+    
         <div class="alert alert-dark">
             <i class="fa fa-square"></i> İşaretlediğin Şık <br>
-            <i class="fa fa-square text-success"></i> Doğru Cevap <br>
-           
+            <i class="fa fa-square text-success"></i> Doğru Cevap <br> 
         </div>
-
 
         @foreach($quiz->questions as $question)
             

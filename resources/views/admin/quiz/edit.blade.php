@@ -2,7 +2,7 @@
     <x-slot name="header">Quizler Güncelle</x-slot>
    
     <div class="row">
-        <div class="card">
+        <div class="card">    
             <div class="card-body">
             <form method="POST" action="{{route('quizzes.update',$quiz->id)}}">
                 @method('PUT') 
